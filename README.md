@@ -41,12 +41,12 @@ ResNet34模型注释
             self.relu2 = nn.ReLU()
 
         def forward(self, x):
-            x = self.conv1(x)
-            x = self.bn1(x)
-            x = self.relu1(x)
-            x = self.conv2(x)
-            x = self.bn2(x)
-            x = self.relu2(x)
+            x = self.conv1(x) # 特征图 x 的大小变成了卷积核的数量，卷积核大小为 3，步长为 stride，填充为 1
+            x = self.bn1(x) # 数值被归一化，x 的大小不变
+            x = self.relu1(x) # 激活函数，x 的大小不变
+            x = self.conv2(x) # 数据的形状不会改变
+            x = self.bn2(x) # 批量归一化层
+            x = self.relu2(x) # 激活函数
             return x
 
 
